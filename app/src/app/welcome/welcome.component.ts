@@ -14,9 +14,17 @@ export class WelcomeComponent implements OnInit {
   name: string = "";
 
   @ViewChild('name') nameKey!: ElementRef;
+  @ViewChild('totalQuestions') totalQuestionsKey!: ElementRef;
+  @ViewChild('category') categoryKey!: ElementRef;
+  @ViewChild('level') levelKey!: ElementRef;
+  @ViewChild('questionType') questionTypeKey!: ElementRef;
   constructor(private formBuilder: FormBuilder, private router: Router) { 
     this.welcomeForm = this.formBuilder.group({
       name: ['',[Validators.required, Validators.min(4)]],
+      totalQuestions: [10,[Validators.required]],
+      category: ['Conocimiento General',[Validators.required]],
+      level: ['Fácil',[Validators.required]],
+      questionType: ['Aleatoria',[Validators.required]]
     });
   }
 
@@ -24,6 +32,10 @@ export class WelcomeComponent implements OnInit {
   }
   startQuiz() {
     localStorage.setItem("name", this.nameKey.nativeElement.value)
+    localStorage.setItem("totalQuestions", this.totalQuestionsKey.nativeElement.value)
+    localStorage.setItem("category", this.categoryKey.nativeElement.value)
+    localStorage.setItem("level", this.levelKey.nativeElement.value)
+    localStorage.setItem("questionType", this.questionTypeKey.nativeElement.value)
   }
 
 

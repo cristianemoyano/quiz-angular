@@ -8,8 +8,14 @@ import { QuestionService } from '../service/question.service';
   styleUrls: ['./question.component.css']
 })
 export class QuestionComponent implements OnInit {
-
+  // Form data
   public name: string="";
+  public totalQuestions: string = "";
+  public category: string = "";
+  public level: string = "";
+  public questionType: string = "";
+
+  // Internal
   public questionList: any = [];
   public currentQuestion: number = 0;
   public points: number = 0;
@@ -30,6 +36,11 @@ export class QuestionComponent implements OnInit {
 
   ngOnInit(): void {
     this.name = localStorage.getItem("name")!;
+    this.totalQuestions = localStorage.getItem("totalQuestions")!;
+    this.category = localStorage.getItem("category")!;
+    this.level = localStorage.getItem("level")!;
+    this.questionType = localStorage.getItem("questionType")!;
+
     this.getAllQuestions();
     this.startCounter();
   }

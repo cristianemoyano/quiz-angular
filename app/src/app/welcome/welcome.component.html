@@ -1,18 +1,55 @@
-<div class="card text-center">
-    <div class="card-header">
-        Inicio
-    </div>
-    <div class="card-body">
-        <h5 class="card-title">Bienvenidos a Questionados!</h5>
-        <form [formGroup]="welcomeForm" (ngSubmit)="onSubmit()">
-            <div class="form-group">
-                <label for="username">Ingresa tu nombre:</label>
-                <input #name type="text" (formControlName)="name" class="form-control col-md-4 my-3 text-center">
-                <div *ngIf="welcomeForm.invalid && welcomeForm.touched" class="form-text text-danger mb-3">
-                    El nombre es requerido.
+<div class="container mt-5 ">
+    <div class="card text-center">
+        <div class="card-body">
+            <h5 class="card-title">¡Bienvenidos a Questionados!</h5>
+            <form [formGroup]="welcomeForm" (ngSubmit)="onSubmit()">
+                <div class="mb-3">
+                    <label for="" class="form-label fw-semibold text-muted">Nombre:</label>
+                    <input #name type="text"  formControlName="name" class="form-control text-center" aria-describedby="emailHelp">
+                    <div *ngIf="welcomeForm.controls['name'].invalid && (welcomeForm.controls['name'].dirty || welcomeForm.controls['name'].touched)" class="badge bg-danger">
+                        <div *ngIf="welcomeForm.controls['name'].errors">
+                            El nombre es requerido.
+                        </div>
+                    </div>
                 </div>
-            </div>
-            <button class="btn btn-primary btn-lg" type="submit">Iniciar Quiz</button>
-        </form>
+                <div class="mb-3">
+                    <label class="form-label text-muted fw-semibold" for="username">Cantidad de Preguntas:</label>
+                    <input #totalQuestions type="number"  formControlName="totalQuestions" class="form-control text-center">
+                    <div *ngIf="welcomeForm.controls['totalQuestions'].invalid && (welcomeForm.controls['totalQuestions'].dirty || welcomeForm.controls['totalQuestions'].touched)" class="badge bg-danger">
+                        <div *ngIf="welcomeForm.controls['totalQuestions'].errors">
+                            La cantidad de preguntas es requirido.
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group mb-3">
+                    <label class="form-label text-muted fw-semibold" for="username">Categoría:</label>
+                    <input #category type="text"  formControlName="category" class="form-control text-center">
+                    <div *ngIf="welcomeForm.controls['category'].invalid && (welcomeForm.controls['category'].dirty || welcomeForm.controls['category'].touched)" class="badge bg-danger">
+                        <div *ngIf="welcomeForm.controls['category'].errors">
+                            La categoría es requerida.
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group mb-3">
+                    <label class="form-label text-muted fw-semibold" for="username">Dificultad:</label>
+                    <input #level type="text"  formControlName="level" class="form-control text-center">
+                    <div *ngIf="welcomeForm.controls['level'].invalid && (welcomeForm.controls['level'].dirty || welcomeForm.controls['level'].touched)" class="badge bg-danger">
+                        <div *ngIf="welcomeForm.controls['level'].errors">
+                            La dificultad es requerida.
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group mb-3">
+                    <label class="form-label text-muted fw-semibold" for="username">Tipo de Preguntas:</label>
+                    <input #questionType type="text"  formControlName="questionType" class="form-control text-center">
+                    <div *ngIf="welcomeForm.controls['questionType'].invalid && (welcomeForm.controls['questionType'].dirty || welcomeForm.controls['questionType'].touched)" class="badge bg-danger">
+                        <div *ngIf="welcomeForm.controls['questionType'].errors">
+                           El tipo de preguntas es requerido.
+                        </div>
+                    </div>
+                </div>
+                <button class="btn btn-primary btn-lg" type="submit" [disabled]="!welcomeForm.valid">Iniciar Quiz</button>
+            </form>
+        </div>
     </div>
 </div>
