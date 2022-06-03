@@ -54,15 +54,15 @@
             </div>
             <!-- END OPTIONS -->
             <div class="d-flex justify-content-between">
-                <button [disabled]="currentQuestion==0" class="btn" (click)="prevQuestion()">
+                <!-- <button [disabled]="currentQuestion==0" class="btn" (click)="prevQuestion()">
                     <i class="fa text-primary fa-chevron-left fa-3x" aria-hidden="true"></i>
-                </button>
+                </button> -->
                 <!-- <button class="btn" (click)="resetQuiz()">
                     <i class="fa text-primary fa-refresh fa-3x" aria-hidden="true"></i>
                 </button> -->
-                <button [disabled]="currentQuestion==questionList.length-1" class="btn" (click)="nextQuestion()">
+                <!-- <button [disabled]="currentQuestion==questionList.length-1" class="btn" (click)="nextQuestion()">
                     <i class="fa text-primary fa-chevron-right fa-3x" aria-hidden="true"></i>
-                </button>
+                </button> -->
             </div>
         </ng-container>
         <ng-container *ngIf="isQuizCompleted">

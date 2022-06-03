@@ -8,12 +8,10 @@
             <div class="form-group">
                 <label for="username">Ingresa tu nombre:</label>
                 <input #name type="text" (formControlName)="name" class="form-control col-md-4 my-3 text-center">
-                <div *ngIf="welcomeForm.invalid" class="form-text text-danger mb-3">
+                <div *ngIf="welcomeForm.invalid && welcomeForm.touched" class="form-text text-danger mb-3">
                     El nombre es requerido.
                 </div>
             </div>
-
-
             <button class="btn btn-primary btn-lg" type="submit">Iniciar Quiz</button>
         </form>
     </div>
