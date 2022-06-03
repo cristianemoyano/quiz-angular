@@ -1,60 +1,72 @@
 <div class="container mt-5 ">
     <div class="card">
-        <div class="d-flex justify-content-between p-3">
+        <div class="d-flex justify-content-around p-2">
             <div class="image">
-                <img src="" width="90" alt="logo">
+                <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor"
+                    class="bi bi-patch-question-fill" viewBox="0 0 16 16">
+                    <path
+                        d="M5.933.87a2.89 2.89 0 0 1 4.134 0l.622.638.89-.011a2.89 2.89 0 0 1 2.924 2.924l-.01.89.636.622a2.89 2.89 0 0 1 0 4.134l-.637.622.011.89a2.89 2.89 0 0 1-2.924 2.924l-.89-.01-.622.636a2.89 2.89 0 0 1-4.134 0l-.622-.637-.89.011a2.89 2.89 0 0 1-2.924-2.924l.01-.89-.636-.622a2.89 2.89 0 0 1 0-4.134l.637-.622-.011-.89a2.89 2.89 0 0 1 2.924-2.924l.89.01.622-.636zM7.002 11a1 1 0 1 0 2 0 1 1 0 0 0-2 0zm1.602-2.027c.04-.534.198-.815.846-1.26.674-.475 1.05-1.09 1.05-1.986 0-1.325-.92-2.227-2.262-2.227-1.02 0-1.792.492-2.1 1.29A1.71 1.71 0 0 0 6 5.48c0 .393.203.64.545.64.272 0 .455-.147.564-.51.158-.592.525-.915 1.074-.915.61 0 1.03.446 1.03 1.084 0 .563-.208.885-.822 1.325-.619.433-.926.914-.926 1.64v.111c0 .428.208.745.585.745.336 0 .504-.24.554-.627z" />
+                </svg>
             </div>
             <div class="quiz-header">
-                <h4>Angular Quiz</h4>
-                <span>Welcome <b> {{name}}</b> </span>
+                <h4>{{titleQuiz}}</h4>
+                <span>{{welcolmeLabel}} <b> {{name}}</b>! </span>
             </div>
         </div>
 
         <ng-container *ngIf="!isQuizCompleted">
+            <!-- HEADER -->
             <div class="d-flex justify-content-around py-3">
                 <div class="score">
-                    <h5>{{points}} Points</h5>
+                    <h5><span class="badge bg-primary">{{points}} </span> {{pointsLabel}}</h5>
                 </div>
-                <div class="question-remain">
-                    <span>Question {{currentQuestion+1}} of {{questionList.length}}</span>
+                <div class="question-remain fw-light">
+                    <span>{{questionsLeftLabel}} {{currentQuestion+1}} {{questionsLeftOfLabel}}
+                        {{questionList.length}}</span>
                 </div>
                 <div class="timer">
-                    <h5>{{counter}} seconds</h5>
+                    <h5><i class="fa fa-clock-o" aria-hidden="true"></i> {{counter}} {{secondsLabel}} </h5>
                 </div>
             </div>
+            <!-- END HEADER -->
+            <!-- Progress bar -->
             <div class="progress mb-3">
                 <div class="progress-bar progress-bar-striped bg-success" role="progressbar"
                     [ngStyle]="{'width': progress+'%'}" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
             </div>
+            <!-- END Progress bar -->
+            <!-- QUESTION -->
             <div class="question">
-                <div class="card">
+                <div class="card border-0">
                     <h3>{{questionList[currentQuestion]?.questionText}}</h3>
                 </div>
             </div>
-            <div class="options">
-                <ol *ngFor="let option of questionList[currentQuestion]?.options">
-                    <li (click)="answer(currentQuestion+1, option)">
-                        <div appChangeBg [isCorrect]="option.correct" class="card">
+            <!-- END QUESTION -->
+            <!-- OPTIONS -->
+            <div class="card m-3 border-0" style="width: 90%;">
+                <ul *ngFor="let option of questionList[currentQuestion]?.options" class="list-group list-group-flush">
+                    <li (click)="answer(currentQuestion+1, option)" class="list-group-item text-center border">
+                        <div appChangeBg [isCorrect]="option.correct">
                             {{option.text}}
                         </div>
                     </li>
-                </ol>
+                </ul>
             </div>
+            <!-- END OPTIONS -->
             <div class="d-flex justify-content-between">
                 <button [disabled]="currentQuestion==0" class="btn" (click)="prevQuestion()">
                     <i class="fa text-primary fa-chevron-left fa-3x" aria-hidden="true"></i>
                 </button>
-                <button class="btn" (click)="resetQuiz()">
+                <!-- <button class="btn" (click)="resetQuiz()">
                     <i class="fa text-primary fa-refresh fa-3x" aria-hidden="true"></i>
-                </button>
+                </button> -->
                 <button [disabled]="currentQuestion==questionList.length-1" class="btn" (click)="nextQuestion()">
                     <i class="fa text-primary fa-chevron-right fa-3x" aria-hidden="true"></i>
                 </button>
             </div>
         </ng-container>
         <ng-container *ngIf="isQuizCompleted">
-            <div class="row d-flex justify-content-between">
-                <img style="width: 50%;" class="img-fluid col-sm-12 mx-auto" src="" alt="">
+            <div class="row d-flex justify-content-around p-3">
                 <div class="result text-center col-md-6 col-sm-12">
                     <h3>Congrats!</h3>
                     <p>Total questions: {{ questionList.length}}</p>

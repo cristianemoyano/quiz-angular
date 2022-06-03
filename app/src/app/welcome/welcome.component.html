@@ -1,8 +1,12 @@
-<div class="container py-5">
-<h1 class="display-5 fw-bold">Welcome to Quiz App</h1>
-<div class="name col-md-4 my-3">
-    <label for="username">Enter your name:</label>
-    <input #name type="text" class="form-control" id="">
-</div>
-<button class="btn btn-primary btn-lg" routerLink="/question" (click)="startQuiz()">Start Quiz</button>
+<div class="card text-center">
+    <div class="card-header">
+        Inicio
+    </div>
+    <div class="card-body">
+        <h5 class="card-title">Bienvenidos a Questionados!</h5>
+
+        <label for="username">Ingresa tu nombre:</label>
+        <input #name type="text" class="form-control col-md-4 my-3 text-center" id="">
+        <button class="btn btn-primary btn-lg" routerLink="/question" (click)="startQuiz()">Start Quiz</button>
+    </div>
 </div>

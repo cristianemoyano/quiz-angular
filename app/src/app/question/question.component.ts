@@ -19,6 +19,13 @@ export class QuestionComponent implements OnInit {
   interval$:any;
   progress:string="0";
   isQuizCompleted: boolean = false;
+  secondsLabel:string = "segundos";
+  questionsLeftLabel:string = "Pregunta";
+  questionsLeftOfLabel:string = "de";
+  pointsLabel:string = "Puntos";
+  welcolmeLabel:string = "Bienvenido, ";
+  titleQuiz:string = "Questionados";
+  sleepQuestionInterval:number = 500;
   constructor(private questionService : QuestionService) { }
 
   ngOnInit(): void {
@@ -50,7 +57,7 @@ export class QuestionComponent implements OnInit {
         this.currentQuestion++;
         this.resetCounter();
         this.getProgressPercent();
-      }, 1000);
+      }, this.sleepQuestionInterval);
 
     } else {
       setTimeout(()=>{
@@ -58,7 +65,7 @@ export class QuestionComponent implements OnInit {
         this.currentQuestion++;
         this.resetCounter();
         this.getProgressPercent();
-      }, 1000);
+      }, this.sleepQuestionInterval);
       this.points -= 10;
     }
   }
