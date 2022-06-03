@@ -1,6 +1,7 @@
 [build]
   command = "npm run prerender"
   functions = "./functions"
+  publish = "dist/app/browser"
 
 [[redirects]]
   from = "/*"
