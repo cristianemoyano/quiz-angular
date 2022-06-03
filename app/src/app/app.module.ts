@@ -18,7 +18,7 @@ import { ChangeBgDirective } from './change-bg.directive';
     ChangeBgDirective
   ],
   imports: [
-    BrowserModule,
+    BrowserModule.withServerTransition({ appId: 'serverApp' }),
     AppRoutingModule,
     HttpClientModule,
 
