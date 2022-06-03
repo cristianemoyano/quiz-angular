@@ -8,6 +8,7 @@ import { QuestionComponent } from './question/question.component';
 import { HeaderComponent } from './header/header.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ChangeBgDirective } from './change-bg.directive';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,8 @@ import { ChangeBgDirective } from './change-bg.directive';
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
     AppRoutingModule,
     HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule
 
   ],
   providers: [],
