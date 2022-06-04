@@ -14,12 +14,13 @@ export class QuestionComponent implements OnInit {
   public category: string = "";
   public level: string = "";
   public questionType: string = "";
+  public COUNTER_INITIAL: number = 20;
 
   // Internal
   public questionList: any = [];
   public currentQuestion: number = 0;
   public points: number = 0;
-  public counter: number = 60;
+  public counter: number = this.COUNTER_INITIAL;
   public correctAnswer: number = 0;
   public incorrectAnswer: number = 0;
   interval$:any;
@@ -86,8 +87,8 @@ export class QuestionComponent implements OnInit {
       this.counter--;
       if (this.counter==0){
         this.currentQuestion++;
-        this.counter=60;
-        this.points-=10;
+        this.counter=this.COUNTER_INITIAL;
+        this.points-=5;
       }
     });
     setTimeout(()=>{
@@ -100,14 +101,14 @@ export class QuestionComponent implements OnInit {
   }
   resetCounter(){
     this.stopCounter();
-    this.counter = 60;
+    this.counter = this.COUNTER_INITIAL;
     this.startCounter();
   }
   resetQuiz(){
     this.resetCounter();
     this.getAllQuestions();
     this.points = 0;
-    this.counter=60;
+    this.counter=this.COUNTER_INITIAL;
     this.currentQuestion =0;
     this.progress = "0";
   }
