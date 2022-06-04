@@ -1,2 +1,8 @@
-html {   background-color: #e5e7eb; }
-body {   background-color: #e5e7eb; }
+
+body {
+    background-image: url("/assets/back.jpg");
+    background-repeat: no-repeat;
+    background-size: 100% 100vh;
+    max-height: 100vh;
+  }
+  

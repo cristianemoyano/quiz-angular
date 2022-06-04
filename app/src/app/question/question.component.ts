@@ -25,7 +25,7 @@ export class QuestionComponent implements OnInit {
   interval$:any;
   progress:string="0";
   isQuizCompleted: boolean = false;
-  secondsLabel:string = "segundos";
+  secondsLabel:string = "''";
   questionsLeftLabel:string = "Pregunta";
   questionsLeftOfLabel:string = "de";
   pointsLabel:string = "Puntos";

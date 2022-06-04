@@ -32,10 +32,10 @@ export class WelcomeComponent implements OnInit {
   }
   startQuiz() {
     localStorage.setItem("name", this.nameKey.nativeElement.value)
-    localStorage.setItem("totalQuestions", this.totalQuestionsKey.nativeElement.value)
-    localStorage.setItem("category", this.categoryKey.nativeElement.value)
-    localStorage.setItem("level", this.levelKey.nativeElement.value)
-    localStorage.setItem("questionType", this.questionTypeKey.nativeElement.value)
+    // localStorage.setItem("totalQuestions", this.totalQuestionsKey.nativeElement.value)
+    // localStorage.setItem("category", this.categoryKey.nativeElement.value)
+    // localStorage.setItem("level", this.levelKey.nativeElement.value)
+    // localStorage.setItem("questionType", this.questionTypeKey.nativeElement.value)
   }
 
 
