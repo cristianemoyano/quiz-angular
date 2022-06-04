@@ -67,9 +67,10 @@
             <div class="row d-flex text-center justify-content-around p-3">
                 <div class="result col-md-6 col-sm-12">
                     <h3 class="text-center p-3">Juego terminado</h3>
+                    
                     <div class="text-center rounded-pill bg-primary text-white">
-                        <span class="m-3">Puntaje final</span>
-                        <h3 class="pb-1">{{ points }}</h3>
+                        <span class="m-3 fs-5">Puntaje final de <span class="fw-bold text-info"> @{{name}}</span></span>
+                        <h3 class="pb-1 fs-2">{{ points }}</h3>
                     </div>
                     <p class="fs-4">Total de preguntas: {{ questionList.length}}</p>
                     <p class="fs-4 text-success">Total correctas: {{ correctAnswer}}</p>
@@ -96,7 +97,7 @@
                 </div>
                 <div class="question-remain fw-light">
                     <span>{{questionsLeftLabel}} {{currentQuestion+1}} {{questionsLeftOfLabel}}
-                        {{questionList.length}}</span>
+                        {{questionList.length}} • <span class="fw-bold text-info"> @{{name}}</span></span>
                 </div>
                 <div class="timer">
                     <h5><i class="fa fa-clock-o" aria-hidden="true"></i> {{counter}} {{secondsLabel}} </h5>

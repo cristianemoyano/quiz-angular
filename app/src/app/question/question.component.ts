@@ -62,7 +62,7 @@ export class QuestionComponent implements OnInit {
       this.stopCounter();
     }
     if(option.correct){
-      this.points += 10;
+      this.points += 10 * this.counter;
       this.correctAnswer++;
       setTimeout(()=>{
         this.currentQuestion++;
@@ -77,7 +77,7 @@ export class QuestionComponent implements OnInit {
         this.resetCounter();
         this.getProgressPercent();
       }, this.sleepQuestionInterval);
-      this.points -= 10;
+      this.points -= 1;
     }
   }
   startCounter(){
