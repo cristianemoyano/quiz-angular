@@ -1,0 +1,20 @@
+{
+    "ranking": [
+        {
+            "username": "Luke",
+            "points": 2400
+        },
+        {
+            "username": "John",
+            "points": 1800
+        },
+        {
+            "username": "Steve",
+            "points": 1500
+        },
+        {
+            "username": "Jane",
+            "points": 900
+        }
+    ]
+}
