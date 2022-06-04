@@ -3,8 +3,9 @@
     <div class="mt-5 card text-center position-absolute top-50 start-50 translate-middle bg-transparent border-0" style="width: 20em;"> 
         <div class="card-body ">
             <form [formGroup]="welcomeForm" (ngSubmit)="onSubmit()">
+                <h1><b>Questionados</b></h1>
                 <div class="mb-3 input-group-lg">
-                    <label for="" class="form-label fw-semibold text-white fw-bold">Nombre:</label>
+                    <label for="" class="form-label fw-semibold text-muted fw-bold">Nombre:</label>
                     <input #name type="text"  formControlName="name" class="form-control text-center btn-box-shadow shadow " aria-describedby="emailHelp" autofocus>
                     <div *ngIf="welcomeForm.controls['name'].invalid && (welcomeForm.controls['name'].dirty || welcomeForm.controls['name'].touched)" class="badge bg-danger">
                         <div *ngIf="welcomeForm.controls['name'].errors">
