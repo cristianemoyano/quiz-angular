@@ -5,6 +5,8 @@ import { QuestionService } from '../service/question.service';
 import { Game } from '../game.model';
 import { GameService } from '../game.service';
 
+import * as _ from 'lodash';
+
 @Component({
   selector: 'app-question',
   templateUrl: './question.component.html',
@@ -51,7 +53,11 @@ export class QuestionComponent implements OnInit {
   getAllQuestions(){
     this.questionService.getQuestionJson()
     .subscribe(res=>{
-      this.questionList = res.questions;
+      this.questionList = _.shuffle(res.questions);
+      this.questionList = this.questionList.map(function(question) {
+        question.options = _.shuffle(question.options);
+        return question;
+     });
     })
   }
   nextQuestion(){
