@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { interval } from 'rxjs';
 import { QuestionService } from '../service/question.service';
 
+import { Game } from '../game.model';
+import { GameService } from '../game.service';
+
 @Component({
   selector: 'app-question',
   templateUrl: './question.component.html',
@@ -33,7 +36,7 @@ export class QuestionComponent implements OnInit {
   welcolmeLabel:string = "Bienvenido, ";
   titleQuiz:string = "Questionados";
   sleepQuestionInterval:number = 500;
-  constructor(private questionService : QuestionService) { }
+  constructor(private questionService : QuestionService, private gameService: GameService) { }
 
   ngOnInit(): void {
     this.name = localStorage.getItem("name")!;
@@ -57,10 +60,29 @@ export class QuestionComponent implements OnInit {
   prevQuestion(){
     this.currentQuestion--;
   }
+
+  updateGame(correct: number, questions: number, score: number, user: string, wrong: number){
+    this.gameService.updateGame({
+      correct: correct,
+      questions: questions,
+      score: score,
+      user: user,
+      wrong: wrong
+    } as Game, localStorage.getItem("gameID"))
+  }
+
   answer(currentQno: number, option:any){
     if (currentQno === this.questionList.length){
+      // END GAME
       this.isQuizCompleted = true;
       this.stopCounter();
+      this.updateGame(
+        this.correctAnswer,
+        this.questionList.length,
+        this.points,
+        localStorage.getItem("name"),
+        this.incorrectAnswer,
+      )
     }
     if(option.correct){
       this.points += 10 * this.counter;

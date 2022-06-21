@@ -2,6 +2,9 @@ import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
+import { Game } from '../game.model';
+import { GameService } from '../game.service';
+
 
 @Component({
   selector: 'app-welcome',
@@ -12,13 +15,14 @@ export class WelcomeComponent implements OnInit {
   
   welcomeForm: FormGroup;
   name: string = "";
+  game: Game;
 
   @ViewChild('name') nameKey!: ElementRef;
   @ViewChild('totalQuestions') totalQuestionsKey!: ElementRef;
   @ViewChild('category') categoryKey!: ElementRef;
   @ViewChild('level') levelKey!: ElementRef;
   @ViewChild('questionType') questionTypeKey!: ElementRef;
-  constructor(private formBuilder: FormBuilder, private router: Router) { 
+  constructor(private formBuilder: FormBuilder, private router: Router, private gameService: GameService) { 
     this.welcomeForm = this.formBuilder.group({
       name: ['',[Validators.required, Validators.min(4)]],
       totalQuestions: [10,[Validators.required]],
@@ -30,12 +34,26 @@ export class WelcomeComponent implements OnInit {
 
   ngOnInit(): void {
   }
+
+  onCreate(response ) {
+    localStorage.setItem("gameID", response.id);
+    console.log("Game ID: "+response.id);
+  }
+  onError(error) {
+    console.log(error);
+  }
+
   startQuiz() {
-    localStorage.setItem("name", this.nameKey.nativeElement.value)
+
+    this.gameService.createGame({user: this.nameKey.nativeElement.value} as Game, this.onCreate, this.onError);
+    localStorage.setItem("name", this.nameKey.nativeElement.value);
+
     // localStorage.setItem("totalQuestions", this.totalQuestionsKey.nativeElement.value)
     // localStorage.setItem("category", this.categoryKey.nativeElement.value)
     // localStorage.setItem("level", this.levelKey.nativeElement.value)
     // localStorage.setItem("questionType", this.questionTypeKey.nativeElement.value)
+
+    
   }
 
 
