@@ -27,7 +27,8 @@ export class DashboardComponent implements OnInit {
           ...(e.payload.doc.data() as Game)
         }
       });
-      this.Games = _.sortBy(this.Games, ['score']).reverse().slice(1).slice(-5);
+      this.Games = _.filter(this.Games, function(game) { return game.score >0; });
+      this.Games = _.sortBy(this.Games, ['score']).reverse().slice(0, 5);
     });
   }
 

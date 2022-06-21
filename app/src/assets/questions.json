@@ -160,6 +160,172 @@
                 }
             ],
             "explanation": "this.propertyName es la forma de acceder a una propiedad específica dentro de una clase"
+        },
+        {
+            "questionText": "Objective-C está fuertemente relacionado con los teléfonos iPhone",
+            "options": [{
+                    "text": "Si",
+                    "correct": true
+                },
+                {
+                    "text": "No"
+                }
+            ],
+            "explanation": "Objective-C es un lenguaje de programación orientado a objetos creado en 1980 como un superconjunto de C para que implementase un modelo de objetos parecido al de Smalltalk. Actualmente se usa como un lenguaje principal de programación para Mac OS X, iOS y GNUstep, además de Swift."
+        },
+        {
+            "questionText": "El lenguaje COBOL no existía en los años 70",
+            "options": [{
+                    "text": "Falso",
+                    "correct": true
+                },
+                {
+                    "text": "Verdadero"
+                }
+            ],
+            "explanation": "El lenguaje COBOL (acrónimo de COmmon Business-Oriented Language, Lenguaje Común Orientado a Negocios) fue creado en el año 1959 con el objetivo de crear un lenguaje de programación universal que pudiera ser usado en cualquier ordenador y que estuviera orientado principalmente a los negocios, es decir, a la llamada informática de gestión."
+        },
+        {
+            "questionText": "Miranda es un lenguaje de programación",
+            "options": [{
+                    "text": "Verdadero",
+                    "correct": true
+                },
+                {
+                    "text": "Falso"
+                }
+            ],
+            "explanation": "Miranda fue desarrollado entre los años 1985 y 1986 por David Turner. Se trata de un lenguaje de programación funcional sucesor de SASL y KRC. El principal objetivo de este lenguaje era el desarrollar una versión comercial de un lenguaje funcional: no-estricto."
+        },
+        {
+            "questionText": "El lenguaje Fortran fue originalmente desarrollado por Apple",
+            "options": [{
+                    "text": "Falso",
+                    "correct": true
+                },
+                {
+                    "text": "Verdadero"
+                }
+            ],
+            "explanation": "Fortran (del inglés The IBM Mathematical Formula Translating System) es un lenguaje de programación de alto nivel de propósito general,2​ procedural3​ e imperativo, que está especialmente adaptado al cálculo numérico y a la computación científica. Desarrollado originalmente por IBM en 1957 para el equipo IBM 704"
+        },
+        {
+            "questionText": "El lenguaje Java existía ya en los años 60",
+            "options": [{
+                    "text": "Verdadero"
+                },
+                {
+                    "text": "Falso",
+                    "correct": true
+                }
+            ],
+            "explanation": "Java es un lenguaje de programación y una plataforma informática que fue comercializada por primera vez en 1995 por Sun Microsystems."
+        },
+        {
+            "questionText": "¿Cuál de estas dos opciones es un lenguaje de programación?",
+            "options": [{
+                    "text": "C"
+                    
+                },
+                {
+                    "text": "J"
+                },
+                {
+                    "text": "Ambos son lenjuages de programación",
+                    "correct": true
+                }
+            ],
+            "explanation": "El lenguaje de programación J, diseñado por Kenneth Iverson y Roger Hui en la década de 1990, es una síntesis de los lenguajes de programación APL (diseñado también por Iverson) y los lenguajes funcionales FP y FL creados por John Backus (famoso por FORTRAN, ALGOL AA)."
+        },
+        {
+            "questionText": "Uno de estos dos lenguajes es orientado a objetos. ¿Cuál?",
+            "options": [{
+                    "text": "Java"
+                   
+                },
+                {
+                    "text": "C++"
+                },
+                {
+                    "text": "Ambos lo son",
+                    "correct": true
+                }
+            ],
+            "explanation": ""
+        },
+        {
+            "questionText": "Modula-2 y Pascal fueron creados por la misma persona",
+            "options": [{
+                    "text": "Verdadero",
+                    "correct": true
+                   
+                },
+                {
+                    "text": "Falso"
+                }
+            ],
+            "explanation": "Modula-2 es un lenguaje de programación cuyo autor es Niklaus Wirth, autor también del lenguaje Pascal."
+        },
+        {
+            "questionText": "BASIC se diseñó en los años 70",
+            "options": [{
+                    "text": "Verdadero"
+                   
+                },
+                {
+                    "text": "Falso",
+                    "correct": true
+                }
+            ],
+            "explanation": "El BASIC original, el Dartmouth BASIC, fue diseñado en 1964 por John George Kemeny, Thomas Eugene Kurtz y Mary Kenneth Keller en el Dartmouth College en New Hampshire, Estados Unidos, como un medio para facilitar la programación en ordenadores a estudiantes (y profesores) que no fueran de ciencias. "
+        },
+        {
+            "questionText": "El lenguaje C es un lenguaje de programación orientado a objetos",
+            "options": [{
+                    "text": "Falso",
+                    "correct": true
+                   
+                },
+                {
+                    "text": "Verdadero"
+                }
+            ],
+            "explanation": "C no es un lenguaje orientado a objetos. C es un lenguaje imperativo de uso general que admite programación estructurada. Debido a que C no está orientado a objetos, C++ nació para tener la función OOP."
+        },
+        {
+            "questionText": "JavaScript ya existía en los años 80",
+            "options": [{
+                    "text": "Falso",
+                    "correct": true
+                   
+                },
+                {
+                    "text": "Verdadero"
+                }
+            ],
+            "explanation": "JavaScript fue desarrollado originalmente por Brendan Eich de Netscape con el nombre de Mocha, el cual fue renombrado posteriormente a LiveScript, para finalmente quedar como JavaScript. Apareció el 4 de diciembre de 1995."
+        },
+        {
+            "questionText": "El nombre del lenguaje de programación Julia es debido a...",
+            "options": [{
+                    "text": "..la creadora del lenguaje"
+                },
+                {
+                    "text": "..un matemático francés"
+                },
+                {
+                    "text": "..la esposa del creador del lenguaje"
+                },
+                {
+                    "text": "..una ocurrencia de los creadores.",
+                    "correct": true
+                },
+                {
+                    "text": "..una matemática francesa"
+                }
+
+            ],
+            "explanation": "El nombre del lenguaje Julia fue una ocurrencia de los creadores. Karpinski dijo sobre el nombre: 'En realidad, no hay una buena razón. Parecía un nombre bonito'."
         }
     ]
 }
