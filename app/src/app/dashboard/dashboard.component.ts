@@ -4,6 +4,8 @@ import { RankingService } from '../service/ranking.service';
 import { Game } from '../game.model';
 import { GameService } from '../game.service';
 
+import * as _ from 'lodash';
+
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
@@ -25,6 +27,7 @@ export class DashboardComponent implements OnInit {
           ...(e.payload.doc.data() as Game)
         }
       });
+      this.Games = _.sortBy(this.Games, ['score']).reverse().slice(1).slice(-5);
     });
   }
 
