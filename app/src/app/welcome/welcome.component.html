@@ -1,22 +1,37 @@
 <main class="flex-shrink-0">
-<div class="container">
-    <div class="mt-5 card text-center position-absolute top-50 start-50 translate-middle bg-transparent border-0" style="width: 20em;"> 
-        <div class="card-body ">
-            <form [formGroup]="welcomeForm" (ngSubmit)="onSubmit()">
-                <h1><b>Questionados</b></h1>
-                <div class="mb-3 input-group-lg">
-                    <label for="" class="form-label fw-semibold text-muted fw-bold">Nombre:</label>
-                    <input #name type="text"  formControlName="name" class="form-control text-center btn-box-shadow shadow " aria-describedby="emailHelp" autofocus>
-                    <div *ngIf="welcomeForm.controls['name'].invalid && (welcomeForm.controls['name'].dirty || welcomeForm.controls['name'].touched)" class="badge bg-danger">
-                        <div *ngIf="welcomeForm.controls['name'].errors">
-                            El nombre es requerido.
+    <div class="container">
+        <div class="row d-none d-lg-block">
+            <!-- QR -->
+            <div class="card bg-transparent mt-5 position-absolute top-0 start-50 translate-middle-x border-0" style="width: 15em;">
+                <div class="card-body">
+                    <img src="/assets/frame.svg" alt="QR code" />
+                </div>
+                <a href="https://qrco.de/quizAngular" class="text-center badge rounded-pill bg-dark fs-6 mb-3">qrco.de/quizAngular</a>
+            </div>
+            <!-- END QR -->
+        </div>
+        <div class="mt-5 card text-center position-absolute top-50 start-50 translate-middle bg-transparent border-0"
+            style="width: 20em;">
+            <div class="card-body mt-5">
+                <form [formGroup]="welcomeForm" (ngSubmit)="onSubmit()">
+                    <h1><b>Questionados</b></h1>
+                    <div class="mb-3 input-group-lg">
+                        <label for="" class="form-label fw-semibold text-muted fw-bold">Nombre:</label>
+                        <input #name type="text" formControlName="name"
+                            class="form-control text-center btn-box-shadow shadow " aria-describedby="emailHelp"
+                            autofocus>
+                        <div *ngIf="welcomeForm.controls['name'].invalid && (welcomeForm.controls['name'].dirty || welcomeForm.controls['name'].touched)"
+                            class="badge bg-danger">
+                            <div *ngIf="welcomeForm.controls['name'].errors">
+                                El nombre es requerido.
+                            </div>
                         </div>
                     </div>
-                </div>
-                <button class="btn btn-warning bg-warning btn-lg btn-box-shadow shadow  rounded fs-3" type="submit" [disabled]="!welcomeForm.valid">Jugar</button>
-            </form>
+                    <button class="btn btn-warning bg-warning btn-lg btn-box-shadow shadow  rounded fs-3" type="submit"
+                        [disabled]="!welcomeForm.valid">Jugar</button>
+                </form>
+            </div>
         </div>
     </div>
-</div>
 
 </main>
