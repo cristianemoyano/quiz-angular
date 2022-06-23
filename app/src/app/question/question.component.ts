@@ -3,6 +3,7 @@ import { interval } from 'rxjs';
 import { QuestionService } from '../service/question.service';
 
 import { Game } from '../game.model';
+import { Question } from '../service/question.model';
 import { GameService } from '../game.service';
 
 import * as _ from 'lodash';
@@ -51,14 +52,20 @@ export class QuestionComponent implements OnInit {
     this.startCounter();
   }
   getAllQuestions(){
-    this.questionService.getQuestionJson()
-    .subscribe(res=>{
-      this.questionList = _.shuffle(res.questions);
+    this.questionService.getQuestions()
+    .subscribe((res)=>{
+      this.questionList = res.map((e) => {
+        return {
+          id: e.payload.doc.id,
+          ...(e.payload.doc.data() as Question)
+        }
+      });
+      this.questionList = _.shuffle(this.questionList);
       this.questionList = this.questionList.map(function(question) {
         question.options = _.shuffle(question.options);
         return question;
      });
-    })
+    });
   }
   nextQuestion(){
     this.currentQuestion++;
