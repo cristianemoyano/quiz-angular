@@ -20,6 +20,7 @@ import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 
 import { environment } from 'src/environments/environment';
 import { AdminComponent } from './admin/admin.component';
+import { ListFilterPipe } from './admin/listFilterPipe';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { AdminComponent } from './admin/admin.component';
     ChangeBgDirective,
     FooterComponent,
     DashboardComponent,
-    AdminComponent
+    AdminComponent,
+    ListFilterPipe
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),

@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Question } from '../service/question.model';
+
+import { FormBuilder, FormGroup } from '@angular/forms';
 
 import { QuestionService } from '../service/question.service';
 
@@ -13,8 +15,21 @@ export class AdminComponent implements OnInit {
 
   public questionList: any = [];
   public questionSelected: Question;
+  public questionForm: FormGroup;
+  searchTerm: string;
 
-  constructor(private questionService: QuestionService) { }
+  @ViewChild('questionText') questionTextKey!: ElementRef;
+  @ViewChild('options') optionsKey!: ElementRef;
+  @ViewChild('explanation') explanationKey!: ElementRef;
+  @ViewChild('closeModal') closeModal: ElementRef
+  @ViewChild('searchInput') searchInput: ElementRef
+  constructor(private questionService: QuestionService, formBuilder: FormBuilder) {
+    this.questionForm = formBuilder.group({
+      questionText: [""],
+      options: [""],
+      explanation: [""],
+    })
+   }
 
   ngOnInit(): void {
     this.getQuestions();
@@ -22,6 +37,30 @@ export class AdminComponent implements OnInit {
 
   thereIsQuestions(): boolean {
     return this.questionList.length > 1;
+  }
+
+  onSubmit() {
+    if (this.questionSelected) {
+      this.onUpdate();
+    } else {
+      this.onCreate();
+    }
+    this.closeModal.nativeElement.click();
+  }
+
+  onCreate() {
+    this.questionForm.controls['options'].setValue(JSON.parse(this.questionForm.controls['options'].value));
+    this.questionService.createQuestion(this.questionForm.value, console.log, console.log);
+  }
+
+  onUpdate() {
+    this.questionForm.controls['questionText'].markAsTouched();
+    this.questionForm.controls['questionText'].setValue(this.questionTextKey.nativeElement.value);
+    this.questionForm.controls['options'].markAsTouched();
+    this.questionForm.controls['options'].setValue(JSON.parse(this.optionsKey.nativeElement.value));
+    this.questionForm.controls['explanation'].markAsTouched();
+    this.questionForm.controls['explanation'].setValue(this.explanationKey.nativeElement.value);
+    this.questionService.updateQuestion(this.questionForm.value, this.questionSelected.id);
   }
 
   toString(item: any): string {
@@ -66,4 +105,8 @@ export class AdminComponent implements OnInit {
     this.questionSelected = null;
   }
 
+  search(): void {
+    let value = this.searchInput.nativeElement.value;
+    this.searchTerm = value;
+  }
 }
