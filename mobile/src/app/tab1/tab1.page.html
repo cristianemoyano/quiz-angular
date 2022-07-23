@@ -16,43 +16,34 @@
   </ion-header>
   <!-- END HEADER -->
 
-  <!-- QUESTION -->
+  <!-- FORM -->
+
   <ion-card>
     <ion-card-header>
-      <ion-card-subtitle>Categoría</ion-card-subtitle>
-      <ion-card-title>Pregunta?</ion-card-title>
+      <ion-card-subtitle></ion-card-subtitle>
+      <ion-card-title>Nuevo juego</ion-card-title>
     </ion-card-header>
   
     <ion-card-content>
-      EXTRA
+      <form [formGroup]="welcomeForm" (ngSubmit)="onSubmit()">
+        <div class="mb-3 input-group-lg">
+            <ion-input #name placeholder="Ingresar Nombre"  formControlName="name" autofocus></ion-input>
+            <div *ngIf="welcomeForm.controls['name'].invalid && (welcomeForm.controls['name'].dirty || welcomeForm.controls['name'].touched)"
+                class="badge bg-danger">
+                <div *ngIf="welcomeForm.controls['name'].errors">
+                    El nombre es requerido.
+                </div>
+            </div>
+        </div>
+        <ion-button [disabled]="!welcomeForm.valid" type="submit" expand="block">Jugar</ion-button>
+    </form>
     </ion-card-content>
   </ion-card>
-  
-  <!-- OPTIONS -->
-  <ion-card>
-    <ion-item href="#">
-      <ion-icon name="ellipse-outline" slot="start"></ion-icon>
-      <ion-label>OPCIÓN 1</ion-label>
-    </ion-item>
-  
-    <ion-item href="#">
-      <ion-icon name="ellipse-outline" slot="start"></ion-icon>
-      <ion-label>OPCIÓN 2</ion-label>
-    </ion-item>
-  
-    <ion-item href="#">
-      <ion-icon name="ellipse-outline"  slot="start"></ion-icon>
-      <ion-label>OPCIÓN 3</ion-label>
-    </ion-item>
-  
-    <ion-item href="#">
-      <ion-icon name="ellipse-outline" slot="start"></ion-icon>
-      <ion-label>OPCIÓN 4</ion-label>
-    </ion-item>
-  </ion-card>
-  <!-- END OPTIONS -->
 
-  <!-- END QUESTION -->
+  
+  <!-- END FORM -->
+
+  
   
 </ion-content>
 
