@@ -13,44 +13,68 @@
     </ion-toolbar>
   </ion-header>
 
-<!-- QUESTION -->
-<ion-card>
-  <ion-card-header>
-    <ion-card-subtitle>
-      {{counter}} {{secondsLabel}}
-      <div class="score">
-        <h5><span class="badge bg-primary">{{points}} </span> {{pointsLabel}}</h5>
-    </div>
-    </ion-card-subtitle>
-    <ion-card-title>{{questionList[currentQuestion]?.questionText}}</ion-card-title>
-  </ion-card-header>
+  <ng-container *ngIf="!isQuizCompleted">
+    <!-- QUESTION -->
+    <ion-card>
+      <ion-card-header>
+        <ion-card-subtitle>
+          {{counter}} {{secondsLabel}}
+          <div class="score">
+            <h5><span class="badge bg-primary">{{points}} </span> {{pointsLabel}}</h5>
+          </div>
+        </ion-card-subtitle>
+        <ion-card-title>{{questionList[currentQuestion]?.questionText}}</ion-card-title>
+      </ion-card-header>
 
-  <ion-card-content>
-    <!-- HEADER -->
-    <div class="d-flex justify-content-around py-3">
-      
-      <div class="question-remain fw-light">
-          <span>{{questionsLeftLabel}} {{currentQuestion+1}} {{questionsLeftOfLabel}}
+      <ion-card-content>
+        <!-- HEADER -->
+        <div class="d-flex justify-content-around py-3">
+
+          <div class="question-remain fw-light">
+            <span>{{questionsLeftLabel}} {{currentQuestion+1}} {{questionsLeftOfLabel}}
               {{questionList.length}} • <span class="fw-bold text-info"> @{{name}}</span></span>
+          </div>
+        </div>
+        <!-- END HEADER -->
+      </ion-card-content>
+    </ion-card>
+
+    <!-- OPTIONS -->
+    <ion-card>
+      <div *ngFor="let option of questionList[currentQuestion]?.options">
+        <ion-item (click)="answer(currentQuestion+1, option)">
+          <ion-icon name="ellipse-outline" slot="start"></ion-icon>
+          <ion-item appChangeBg [isCorrect]="option.correct">
+            {{option.text}}
+          </ion-item>
+        </ion-item>
       </div>
-  </div>
-  <!-- END HEADER -->
-  </ion-card-content>
-</ion-card>
 
-<!-- OPTIONS -->
-<ion-card>
-  <div *ngFor="let option of questionList[currentQuestion]?.options">
-  <ion-item (click)="answer(currentQuestion+1, option)">
-    <ion-icon name="ellipse-outline" slot="start"></ion-icon>
-    <div appChangeBg [isCorrect]="option.correct">
-      {{option.text}}
-  </div>
-  </ion-item>
-</div>
+    </ion-card>
+    <!-- END OPTIONS -->
 
-</ion-card>
-<!-- END OPTIONS -->
+    <!-- END QUESTION -->
+  </ng-container>
 
-<!-- END QUESTION -->
+
+  <!-- FINAL CONTAINER -->
+  <ng-container *ngIf="isQuizCompleted">
+    <ion-card>
+      <ion-card-header>
+        <ion-card-subtitle>Juego terminado</ion-card-subtitle>
+        <ion-card-title>Puntaje final de <span class="fw-bold text-info"> @{{name}}: {{ points }}</span>
+        </ion-card-title>
+      </ion-card-header>
+
+      <ion-card-content>
+        <p class="fs-4">Total de preguntas: {{ questionList.length}}</p>
+        <p class="fs-4 text-success">Total correctas: {{ correctAnswer}}</p>
+        <p class="fs-4 text-danger">Total incorrectas: {{ incorrectAnswer }}</p>
+        <br>
+        <ion-button expand="block" routerLink="/tabs/tab1">Jugar de Nuevo</ion-button>
+      </ion-card-content>
+    </ion-card>
+  </ng-container>
+  <!-- FINAL CONTAINER -->
+
 </ion-content>
