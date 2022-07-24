@@ -13,3 +13,10 @@ cd app && ng serve
 ```
 cd mobile && ionic serve
 ```
+
+
+## Build Ionic project
+
+```
+cd mobile && ionic build
+```
