@@ -20,3 +20,7 @@ cd mobile && ionic serve
 ```
 cd mobile && ionic build
 ```
+
+## Android
+
+https://capacitorjs.com/docs/android
